@@ -9,13 +9,13 @@ class BookShelf extends Component {
   }
 
   render() {
-    const { books, title, shelf } = this.props
+    const { books, title } = this.props
 
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{title}</h2>
         <div className="bookshelf-books">
-          <BooksList books={books} shelf={shelf}/>
+          <BooksList books={books} />
         </div>
       </div>
     )

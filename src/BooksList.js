@@ -4,7 +4,7 @@ import Book from './Book'
 
 function BooksList(props) {
   return  <ol className="books-grid">
-            {props.books.map((book) => <Book key={book.id} book={book} shelf={props.shelf}/>)}
+            {props.books.map((book) => <Book key={book.id} book={book} />)}
           </ol>
 
 }
