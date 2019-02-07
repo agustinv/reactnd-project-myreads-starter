@@ -6,6 +6,14 @@ The main page also has a link to /search, a search page that allows you to find 
 
 The search page also has a link to / (the root URL), which leads back to the main page.
 
+Extra Project Ideas:
+If time permits, explore what could be done with images in project.  The Image url suggests a hidden api.
+eg some future feature might require different size images, edge=curl effect. etc
+
+Also wrote a github issue since it would be fun to document what can be done with images:
+https://github.com/udacity/reactnd-project-myreads-starter/issues/98
+
+
 
 # MyReads Project
 
