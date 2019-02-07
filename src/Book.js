@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function Book(props) {
   const { book, shelf } = props
-  return  <li key={book.id}>
+  return  <li>
             <div className="book">
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageLinks.thumbnail}` }}></div>
