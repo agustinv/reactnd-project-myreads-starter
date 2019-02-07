@@ -5,11 +5,12 @@ import BookShelf from './BookShelf'
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    updateBookShelf: PropTypes.func.isRequired
   }
 
   render() {
-    const { books } = this.props
+    const { books, updateBookShelf } = this.props
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -18,9 +19,18 @@ class ListBooks extends Component {
 
         <div className="list-books-content">
           <div>
-            <BookShelf books={books.filter(book => book.shelf === "currentlyReading")} title="Currently Reading" />
-            <BookShelf books={books.filter(book => book.shelf === "wantToRead")} title="Want to Read" />
-            <BookShelf books={books.filter(book => book.shelf === "read")} title="Read" />
+            <BookShelf
+              books={books.filter(book => book.shelf === "currentlyReading")}
+              title="Currently Reading"
+              updateBookShelf={updateBookShelf} />
+            <BookShelf
+              books={books.filter(book => book.shelf === "wantToRead")}
+              title="Want to Read"
+              updateBookShelf={updateBookShelf} />
+            <BookShelf
+              books={books.filter(book => book.shelf === "read")}
+              title="Read"
+              updateBookShelf={updateBookShelf} />
           </div>
         </div>
 
