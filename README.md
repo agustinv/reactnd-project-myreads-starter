@@ -1,3 +1,12 @@
+# MyReads Project Notes
+Each book has a control that lets you select the shelf for that book.
+
+The main page also has a link to /search, a search page that allows you to find books to add to your library.
+- When a book is on a bookshelf, it should have the same state on both the main application page and the search page.
+
+The search page also has a link to / (the root URL), which leads back to the main page.
+
+
 # MyReads Project
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
@@ -63,7 +72,7 @@ update(book, shelf)
 ```
 
 * book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
+* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]
 * Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
 ### `search`
