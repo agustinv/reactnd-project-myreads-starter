@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 
 function Book(props) {
   const { book, updateBookShelf } = props
+  const thumbnail = book.imageLinks !== undefined ? book.imageLinks.thumbnail : ''
+  const authors = book.authors !== undefined ? book.authors : []
   return  <li>
             <div className="book">
               <div className="book-top">
-                <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageLinks.thumbnail}` }}></div>
+                <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${thumbnail}` }}></div>
                 <div className="book-shelf-changer">
                   <select value={book.shelf} onChange={(event) => updateBookShelf(book, event.target.value)} >
                     <option value="move" disabled>Move to...</option>
@@ -18,7 +20,7 @@ function Book(props) {
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.authors.join(', ')}</div>
+              <div className="book-authors">{authors.join(', ')}</div>
             </div>
           </li>
 }
