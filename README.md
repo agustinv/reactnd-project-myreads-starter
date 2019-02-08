@@ -23,10 +23,13 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 
 ## TL;DR
 
-To get started developing right away:
+Installation and Launching Instructions:
 
+* First make sure node and npm is installed in your local machine.
+* git clone the git repo (eg git clone git@github.com:agustinv/reactnd-project-myreads-starter.git)
+* cd to local folder of app (eg cd reactnd-project-myread-starter)
 * install all project dependencies with `npm install`
-* start the development server with `npm start`
+* start the local server with `npm start`
 
 ## What You're Getting
 ```bash
