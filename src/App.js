@@ -15,9 +15,7 @@ class BooksApp extends React.Component {
       .then((response) => {
         book.shelf = shelf
         this.setState((current_state) => ({
-          books: current_state.books.map((b) =>
-            b.id === book.id ? book : b
-          )
+          books: [...current_state.books.filter((b) =>b.id !== book.id), book]
         }))
       })
   }
