@@ -18,7 +18,7 @@ class SearchBooks extends Component {
   }
   processResponse = (response) => {
     const results = (response.error === undefined) ? response : []
-    return results.map((b) => this.props.books.find((book) => book.id === b.id) || b)
+    return results.map((b) => this.props.books.find((book) => book.id === b.id) || Object.assign(b, {shelf: 'none'}))
   }
   searchBooks = (query) => {
     const q = query.trim()
