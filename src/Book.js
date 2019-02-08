@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import BookAuthors from './BookAuthors'
 import BookShelfChanger from './BookShelfChanger'
+import BookImage from './BookImage'
 
 function Book(props) {
   const { book, updateBookShelf } = props
-  const thumbnail = book.imageLinks !== undefined ? book.imageLinks.thumbnail : ''
   return  <li>
             <div className="book">
               <div className="book-top">
-                <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${thumbnail}` }}></div>
+                <BookImage imageLinks={book.imageLinks} />
                 <BookShelfChanger book={book} updateBookShelf={updateBookShelf} />
               </div>
               <div className="book-title">{book.title}</div>
