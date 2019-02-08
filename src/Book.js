@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BookAuthors from './BookAuthors'
 
 function Book(props) {
   const { book, updateBookShelf } = props
   const thumbnail = book.imageLinks !== undefined ? book.imageLinks.thumbnail : ''
-  const authors = book.authors !== undefined ? book.authors : []
   return  <li>
             <div className="book">
               <div className="book-top">
@@ -20,7 +20,7 @@ function Book(props) {
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{authors.join(', ')}</div>
+              <BookAuthors authors={book.authors} />
             </div>
           </li>
 }
