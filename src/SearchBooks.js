@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BooksList from './BooksList'
-
+import SearchInput from './SearchInput'
 
 class SearchBooks extends Component {
   static propTypes = {
@@ -11,20 +11,21 @@ class SearchBooks extends Component {
     updateBookShelf: PropTypes.func.isRequired
   }
   state = {
-    query: '',
     results: []
   }
-  handleChange = (event) => {
-    const query = event.target.value.trim()
-    this.setState({ query: event.target.value, results: [] });
-    query.length &&
-      BooksAPI.search(query)
-        .then((response) => {
-          response.error === undefined && this.setState({ results: response });
-        })
+  searchBooks = (query) => {
+    const q = query.trim()
+    q.length &&
+    BooksAPI.search(q)
+      .then((response) => {
+        response.error === undefined && this.setState({ results: response });
+        response.error !== undefined && this.setState({ results: [] });
+      })
+      .catch(() => this.setState({ results: [] }))
+    !q.length && this.setState({ results: [] })
   }
   render() {
-    const { query, results } = this.state
+    const { results } = this.state
     const { books, updateBookShelf } = this.props
 
     return (
@@ -33,14 +34,7 @@ class SearchBooks extends Component {
           <Link to="/">
             <button className="close-search">Close</button>
           </Link>
-          <div className="search-books-input-wrapper">
-            <input
-              type="text"
-              placeholder="Search by title or author"
-              value={query}
-         			onChange={this.handleChange}
-              />
-          </div>
+          <SearchInput searchBooks={this.searchBooks} />
         </div>
         <div className="search-books-results">
           <BooksList books={results} updateBookShelf={updateBookShelf} />
