@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BookAuthors from './BookAuthors'
+import BookShelfChanger from './BookShelfChanger'
 
 function Book(props) {
   const { book, updateBookShelf } = props
@@ -9,15 +10,7 @@ function Book(props) {
             <div className="book">
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${thumbnail}` }}></div>
-                <div className="book-shelf-changer">
-                  <select value={book.shelf} onChange={(event) => updateBookShelf(book, event.target.value)} >
-                    <option value="move" disabled>Move to...</option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="none">None</option>
-                  </select>
-                </div>
+                <BookShelfChanger book={book} updateBookShelf={updateBookShelf} />
               </div>
               <div className="book-title">{book.title}</div>
               <BookAuthors authors={book.authors} />
