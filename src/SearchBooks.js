@@ -13,16 +13,23 @@ class SearchBooks extends Component {
   state = {
     results: []
   }
+  clearResults = () => {
+    this.setState({ results: [] })
+  }
   searchBooks = (query) => {
     const q = query.trim()
+
+    // dont query server if there is no query string
     q.length &&
     BooksAPI.search(q)
       .then((response) => {
-        response.error === undefined && this.setState({ results: response });
-        response.error !== undefined && this.setState({ results: [] });
+        const results = (response.error === undefined) ? response : []
+        this.setState({ results: results });
       })
-      .catch(() => this.setState({ results: [] }))
-    !q.length && this.setState({ results: [] })
+      .catch(this.clearResults)
+
+    // if no query, empty state
+    !q.length && this.clearResults()
   }
   render() {
     const { results } = this.state
