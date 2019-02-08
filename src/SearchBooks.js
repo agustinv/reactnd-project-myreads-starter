@@ -16,6 +16,10 @@ class SearchBooks extends Component {
   clearResults = () => {
     this.setState({ results: [] })
   }
+  processResponse = (response) => {
+    const results = (response.error === undefined) ? response : []
+    return results.map((b) => this.props.books.find((book) => book.id === b.id) || b)
+  }
   searchBooks = (query) => {
     const q = query.trim()
 
@@ -23,8 +27,7 @@ class SearchBooks extends Component {
     q.length &&
     BooksAPI.search(q)
       .then((response) => {
-        const results = (response.error === undefined) ? response : []
-        this.setState({ results: results });
+        this.setState({ results: this.processResponse(response) });
       })
       .catch(this.clearResults)
 
